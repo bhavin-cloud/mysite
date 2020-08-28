@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="{% static 'sty.css' %}">
+</head>
+<body>
+    {% if logout %}
+    <div class="logout">{{logout}}</div>
+    {% endif %}
+    
+    
+        {% if message %}
+        <div class="message">{{ message }}</div>
+        {% endif %}
+    
+    <div class="login-box">
+        <h1>Login</h1>
+
+        <form action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+            <div class="textbox">
+                <i class="fas fa-user"></i>
+
+                <input type="text" name="username" placeholder="Username">
+            </div>
+            <div class="textbox">
+                <i class="fas fa-lock"></i>
+
+                <input type="password" name="password" placeholder="Password">
+            </div>
+            <div>
+                <input type="submit" class="btn" value="Login">
+            </div>
+        </form>
+    </div>
+</body>
+
+
+</html>
